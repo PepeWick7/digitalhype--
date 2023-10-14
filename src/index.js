@@ -83,3 +83,30 @@ app.post('/api/saveImage', (req, res) => {
         return res.status(200).send({status: 'success', path: 'public/images/' + fileName});
     });
 });
+
+//We receive the query from the client and return the data
+app.get('/api/files', (request, response) => {
+    var query = File.find({});
+
+    query.sort('-date').exec((err, files) => {
+        if (err) {
+            return response.status(500).send({
+                status: "error",
+                message: "Error extracting data"
+            });
+        }
+
+        //If the files do not exist
+        if (!files) {
+            return response.status(404).send({
+                status: "error",
+                message: "There are no posts to show"
+            });
+        }
+
+        return response.status(200).send({
+            status: "success",
+            files
+        });
+    });
+});
