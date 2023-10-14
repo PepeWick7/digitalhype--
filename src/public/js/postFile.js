@@ -22,3 +22,13 @@ send.onclick = async function() {
         window.location.href = 'index.html';
     }
 }
+
+async function imageUpload(formData) {
+    await fetch('/api/saveImage', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json'
+        },
+        body: formData
+    });
+}
