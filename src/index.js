@@ -19,6 +19,15 @@ const url = "mongodb+srv://user-test:Admin123@cluster0.tjhm7ef.mongodb.net/File?
 mongoose.Promise = global.Promise;
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Enable CORS to allow AJAX and HTTP requests from the frontend.
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    //res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    //res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
+});
+
 mongoose.connect(url, { useNewUrlParser: true }).then(() => {
     console.log('Connection with the Data Base successfully');
     app.listen(port, () => {
