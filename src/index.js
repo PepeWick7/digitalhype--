@@ -34,3 +34,32 @@ mongoose.connect(url, { useNewUrlParser: true }).then(() => {
         console.log('Server running on http://localhost:' + port);
     });
 });
+
+//We specify the address to receive the client data ('/api/save')
+//request: Data received from client
+//response: Response we send to the client
+app.post('/api/save', (request, response) => {
+    console.log('Response received');
+    const data = request.body;
+
+    var file = new File();
+
+    //We assign the values
+    file.description = data.description;
+    file.image = data.image;
+
+    file.save((err, fileStored) => {
+        if (err || !fileStored) {
+            return response.status(404).send({
+                status: 'error',
+                message: 'The post has not been saved'
+            });
+        }
+
+        //return response
+        return response.status(200).send({
+            status: 'success',
+            fileStored
+        });
+    });
+});
