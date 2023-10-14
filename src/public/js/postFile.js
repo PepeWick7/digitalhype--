@@ -32,3 +32,20 @@ async function imageUpload(formData) {
         body: formData
     });
 }
+
+async function postData(description, image) {
+    const response = await fetch('/api/save', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            'description': description,
+            "image": image
+        })
+    });
+
+    const data = await response.json();
+    console.log(data);
+}
