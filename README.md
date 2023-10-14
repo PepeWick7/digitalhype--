@@ -13,6 +13,11 @@ Run npm start (Initialize the server)
 
 # Database connection in MongoDB Atlas
 
+1.- In section "Database" -> "Connect" then select "Connecting with MongoDB Driver"
+2.- Add your connection string into your application code (copy into connection in application code)
+
+Replace <password> with the password for the user-test user
+
 
 
 
