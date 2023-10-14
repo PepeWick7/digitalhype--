@@ -15,7 +15,7 @@ app.use(fileUpload({
 
 const port = process.env.PORT || 3000;
 
-const url = "mongodb+srv://user-test:Admin123@cluster0.tjhm7ef.mongodb.net/File?retryWrites=true&w=majority";
+const url = "mongodb+srv://user-test:<password>@cluster0.tjhm7ef.mongodb.net/?retryWrites=true&w=majority";
 mongoose.Promise = global.Promise;
 app.use(express.static(path.join(__dirname, 'public')));
 
