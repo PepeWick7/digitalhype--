@@ -63,3 +63,23 @@ app.post('/api/save', (request, response) => {
         });
     });
 });
+
+//Image upload
+app.post('/api/saveImage', (req, res) => {
+    const file = req.files.myFile;
+    const fileName = req.files.myFile.name;
+    const path = __dirname + '/public/images/' + fileName;
+    console.log(path);
+
+    file.mv(path, (error) => {
+        if (error) {
+            console.error(error);
+            res.writeHead(500, {
+                'Content-Type': 'application/json'
+            });
+            res.end(JSON.stringify({status: 'error', message: error}));
+            return;
+        }
+        return res.status(200).send({status: 'success', path: 'public/images/' + fileName});
+    });
+});
