@@ -6,3 +6,9 @@ To later consume MongoDB and display the information.
 Node.js/Javascript was used in the backend, in a MongoDB database.
 
 To be able to test it, you need to use MongoDB Atlas.
+
+Run npm install (Install packages)
+
+Run npm start (Initialize the server)
+
+
