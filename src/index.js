@@ -17,7 +17,7 @@ const port = process.env.PORT || 3000;
 
 const url = "mongodb+srv://user-test:Admin123@cluster0.tjhm7ef.mongodb.net/File?retryWrites=true&w=majority";
 mongoose.Promise = global.Promise;
-app.use(express.static(path.join(__dirname, 'public')));*/
+app.use(express.static(path.join(__dirname, 'public')));
 
 //We load the bodyParser: middleware to parse body through the URL
 app.use(bodyParser.urlencoded({extended: false}));
