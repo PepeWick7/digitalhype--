@@ -17,7 +17,13 @@ const port = process.env.PORT || 3000;
 
 const url = "mongodb+srv://user-test:Admin123@cluster0.tjhm7ef.mongodb.net/File?retryWrites=true&w=majority";
 mongoose.Promise = global.Promise;
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));*/
+
+//We load the bodyParser: middleware to parse body through the URL
+app.use(bodyParser.urlencoded({extended: false}));
+
+//We convert any type of request to json
+app.use(bodyParser.json());
 
 //Enable CORS to allow AJAX and HTTP requests from the frontend.
 app.use((req, res, next) => {
@@ -28,6 +34,7 @@ app.use((req, res, next) => {
     next();
 });
 
+//We connect to mongoDBB
 mongoose.connect(url, { useNewUrlParser: true }).then(() => {
     console.log('Connection with the Data Base successfully');
     app.listen(port, () => {
@@ -84,7 +91,7 @@ app.post('/api/saveImage', (req, res) => {
     });
 });
 
-//We receive the query from the client and return the data
+//We receive the query from the client and return the data:
 app.get('/api/files', (request, response) => {
     var query = File.find({});
 
