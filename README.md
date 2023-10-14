@@ -11,4 +11,8 @@ Run npm install (Install packages)
 
 Run npm start (Initialize the server)
 
+# Database connection in MongoDB Atlas
+
+
+
 
